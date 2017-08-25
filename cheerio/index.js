@@ -7,18 +7,24 @@ const http = require('http');
 
 var urls = [];
 
-app.get('/scraper',function(req,res){
+app.get('/',function(req,res){
 
-  request('https://www.facebook.com/nghia.phamthanh.169', function (error, response, body) {
-    var $ = cheerio.load(body);
-    var id = $(this).attr('ACCOUNT_ID');
-    // $('a.title').each(function(i, elem){
-    //   //var a = $(this).attr('class', 'title may-blank outbound').html();
-    //   var url = $(this).attr('href');
-    //   urls.push(url);
-    // });
-    console.log(id);
+  request('https://news.ycombinator.com', function (error, response, html) {
+    if (!error && response.statusCode == 200) {
+      console.log(html);
+    }
   });
+
+  // request('https://www.facebook.com/nghia.phamthanh.169', function (error, response, body) {
+  //   var $ = cheerio.load(body);
+  //   var id = $(this).attr('ACCOUNT_ID');
+  //   // $('a.title').each(function(i, elem){
+  //   //   //var a = $(this).attr('class', 'title may-blank outbound').html();
+  //   //   var url = $(this).attr('href');
+  //   //   urls.push(url);
+  //   // });
+  //   console.log(id);
+  // });
 
   // request('https://www.reddit.com', function (error, response, body) {
   //   var $ = cheerio.load(body);
